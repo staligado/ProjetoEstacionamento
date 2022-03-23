@@ -1,0 +1,12 @@
+<h2>Updating Mensalistas: {{mensalista}}</h2>
+
+
+<form action="{% url 'core_mensalista_update' mensalista.id %}" method="POST">
+
+    {%csrf_token%}
+
+    {{form.as_p}}
+
+<button type="submit">Atualizar</button>
+
+</form>
