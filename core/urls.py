@@ -14,6 +14,7 @@ from .views import (
     mensalista_novo,
     movmensalista_novo,
     pessoa_update,
+    veiculo_update,
     )
 
 
@@ -22,9 +23,10 @@ urlpatterns = [
     path("", home, name='core_home'),
     path("pessoas/", lista_pessoas ,name='core_lista_pessoas'),
     path("pessoa-novo/", pessoa_novo ,name='core_pessoa_novo'),
-    path("pessoa-update/P<id>", pessoa_update , name='core_pessoa_update'),
+    path("pessoa-update/<id>", pessoa_update , name='core_pessoa_update'),
     path("veiculos/", lista_veiculos ,name='core_lista_veiculos'),
     path("veiculo-novo/", veiculo_novo ,name='core_veiculo_novo'),
+    path("veiculo-update/<id>", veiculo_update, name='core_veiculo_update'),
     path("mov-rot/", lista_movrotativos ,name='core_lista_movrotativos'),
     path("mov-rot-novo", movrotativo_novo, name='core_movrotativo_novo' ),
     path("mensalistas/", lista_mensalistas ,name='core_lista_mensalistas'),
