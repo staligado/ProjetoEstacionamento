@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from .forms import MensalistaForm, MovmensalistaForm, PessoaForm, VeiculoForm, MovrotativoForm
 from .models import (
@@ -50,7 +51,7 @@ def pessoa_delete(request, id):
         pessoa.delete()
         return redirect('core_lista_pessoas')
     else:
-        return render(request, 'core/delete_confirm.html', {'pessoa': pessoa})
+        return render(request, 'core/delete_confirm.html', {'obj': pessoa})
 
 
 def lista_veiculos(request):
@@ -79,6 +80,16 @@ def veiculo_update(request, id):
             return redirect('core_lista_veiculos')
     else:
         return render(request, 'core/update_veiculo.html', data)
+
+
+def veiculo_delete(request, id):
+    veiculo = Veiculo.objects.get(id=id)
+
+    if request.method == "POST":
+        veiculo.delete()
+        return redirect('core_lista_veiculos')
+    else:
+        return render(request, 'core/delete_confirm.html', {'obj': veiculo})
 
 
 def lista_movrotativos(request):
