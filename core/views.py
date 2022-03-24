@@ -128,9 +128,9 @@ def mensalista_update(request, id):
 
 
 def lista_movmensalistas(request):
-    movmensalistas = MovMensalista.objects.all()
+    mov_mensalista = MovMensalista.objects.all()
     form = MovmensalistaForm()
-    return render(request, 'core/lista_movmensalistas.html', {'movmensalistas': movmensalistas, 'form': form})
+    return render(request, 'core/lista_movmensalistas.html', {'mov_mensalista': mov_mensalista, 'form': form})
 
 
 def movmensalista_novo(request):
@@ -138,4 +138,19 @@ def movmensalista_novo(request):
     if form.is_valid:
         form.save()
     return redirect('core_lista_movmensalistas')
+
+
+def movmensalista_update(request, id):
+    data ={}
+    mov_mensalista = MovMensalista.objects.get(id=id)
+    form = MovmensalistaForm(request.POST or None, instance=mov_mensalista)
+    data['mov_mensalista'] = mov_mensalista
+    data['form'] = form
+
+    if request.method == "POST":
+        if form.is_valid:
+            form.save()
+            return redirect('core_lista_movmensalistas')
+    else:
+        return render(request, 'core/update_movmensalista.html', data)
 

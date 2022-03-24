@@ -1,9 +1,13 @@
-<h2> Lista Movimento Mensalistas</h2>
+<h2> Lista Movimento Mensalistas:</h2>
 
 
 <ul>
-{% for movmensalista in movmensalistas %}
-    <li> {{ movmensalista.mensalista }} - {{ movmensalista.total }} </li>
+{% for mov in mov_mensalistas %}
+    <li> 
+        <a href="{% url 'core_movmensalista_update' mov.id %}">
+            {{ mov.mensalista }} - {{ mov.total }} 
+        </a> 
+    </li>
 {% endfor %}
 </ul>
 
