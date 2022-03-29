@@ -20,6 +20,9 @@ from .views import (
     movmensalista_update,
     pessoa_delete,
     veiculo_delete,
+    movrotativo_delete,
+    mensalista_delete,
+    movmensalista_delete,
     )
 
 
@@ -37,10 +40,13 @@ urlpatterns = [
     path("mov-rot/", lista_movrotativos ,name='core_lista_movrotativos'),
     path("mov-rot-novo", movrotativo_novo, name='core_movrotativo_novo' ),
     path("mov-rot-update/<id>", movrotativo_update, name= 'core_movrotativo_update'),
+    path("mov-rot-delete/<id>", movrotativo_delete, name='core_movrotativo_delete'),
     path("mensalistas/", lista_mensalistas ,name='core_lista_mensalistas'),
     path("mensalista-novo", mensalista_novo, name='core_mensalista_novo'),
     path("mensalista-update/<id>", mensalista_update, name='core_mensalista_update'),
+    path("mensalista-delete/<id>", mensalista_delete, name='core_mensalista_delete'),
     path("mov-mensalistas/", lista_movmensalistas ,name='core_lista_movmensalistas'),
     path('movmensalista-novo/', movmensalista_novo, name='core_movmensalista_novo'),
-    path("movmensalista-update", movmensalista_update, name='core_movmensalista_update'),
+    path("movmensalista-update/<id>", movmensalista_update, name='core_movmensalista_update'),
+    path("movmensalista-delete/<id>", movmensalista_delete, name='core_movmensalista_delete'),
 ]

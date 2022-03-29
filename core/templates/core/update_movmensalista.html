@@ -1,4 +1,4 @@
-<h2>Updating Movimentos Mensalistas: {{mov_mensalistas}}</h2>
+<h2>Updating Movimentos Mensalistas: {{mov_mensalista}}</h2>
 
 
 <form action="{% url 'core_movmensalista_update' mov_mensalista.id %}" method="POST">
@@ -8,3 +8,5 @@
     <button type="submit">Atualizar</button>
 
 </form>
+
+<a href="{% url 'core_movmensalista_delete' mov_mensalista.id %}">Deletar</a>
