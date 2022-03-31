@@ -1,24 +1,39 @@
 {% extends 'base.html' %}
+{% load bootstrap %}
 
 {%block main%}
     
-    <h2> Lista Movimento Mensalistas:</h2>
+<div class="row">
+    <div class="col">
+        <h2> Lista Movimento Mensalistas:</h2>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-sm-6">
+        <ul>
+            <form action="{% url 'core_movmensalista_novo' %}" method="POST">
+                {%csrf_token%}
+                {{form|bootstrap}}
+    
+            <br>
+    
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        
+        </ul>
+    </div>
 
-    <ul>
-    {% for mov in mov_mensalistas %}
-        <li> 
-            <a href="{% url 'core_movmensalista_update' mov.id %}">
-                {{ mov.mensalista }} - {{ mov.total }} 
-        </a> 
-        </li>
-    {% endfor %}
-    </ul>
-
-    <form action="{% url 'core_movmensalista_novo' %}" method="POST">
-        {%csrf_token%}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-    </form>
+    <div class="col-sm-6">
+        {% for mov in mov_mensalistas %}
+            <li> 
+                <a href="{% url 'core_movmensalista_update' mov.id %}">
+                    {{ mov.mensalista }} - {{ mov.total }} 
+                </a> 
+            </li>
+        {% endfor %}
+        
+    </div>
+</div>
 
 {%endblock%}
