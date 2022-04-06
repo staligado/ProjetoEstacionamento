@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
 {% load bootstrap %}
 
+
+{%block menu%}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'core_home' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
+            <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
+            <a class="dropdown-item active" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+    </ul>
+{%endblock%}
+
 {%block main%}
     
 <div class="row">
@@ -26,12 +48,28 @@
     </div>
 
     <div class="col-sm-6">
-        {% for mov in mov_rot %}
-            <li> 
-               <a href="{% url 'core_movrotativo_update' mov.id %}"> 
-                   {{ mov.checkin }} - {{ mov.veiculo.placa }}</a> 
-            </li>
-        {% endfor %}
+        <table class="table">
+            <thead class= "thead-dark">
+              <tr>
+                <th scope="col">Veiculo</th>
+                <th scope="col">Checkin</th>
+                <th scope="col">Valor Hora</th>
+                <th scope="col">Pago</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for mov in mov_rot %}
+              <tr>
+                <td><a href="{% url 'core_movrotativo_update' mov.id %}" style="display:block;">&nbsp;></a>{{mov.veiculo.placa}}</td>
+                <th scope="row" >{{mov.checkin}}</th>
+                <td>{{mov.valor_hora}}</td>
+                <td>{{mov.pago}}</td>
+              </tr>
+              <tr>
+                {%endfor%}
+            </tbody>
+          </table>
+       
         
     </div>
 </div>

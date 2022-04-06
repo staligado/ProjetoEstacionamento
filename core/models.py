@@ -52,7 +52,7 @@ class MovRotativo(models.Model):
 
     
     def total(self):
-        return self.valor_hora * self.horas_total()
+        return total == self.valor_hora * self.horas_total() 
 
 
     def __str__(self):
